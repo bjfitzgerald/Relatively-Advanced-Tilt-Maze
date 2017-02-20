@@ -12,7 +12,7 @@ Assignment Name: Programming Assignment 1, Part II
 * The inner maze walls turn at random, so watch out!
 
 # B. Additional Elements
-* None yet
+* Changed the particle system so that it always emits upwards
 
 # C. Known Issues
 * It is possible for pick-ups to be randomly assigned to the same board location (they will not spawn on the goal or in the center). Since the spec did not address overlapping pick-ups, this might not be an 'issue' per se, but certainly something to be aware of.
