@@ -7,10 +7,12 @@ public class TiltController : MonoBehaviour {
 
 	public float tiltSensitivity;
 	public Vector3 currentRot;
+	private GameObject particleSystem;
 
 	// Use this for initialization
 	void Start () {
 		tiltSensitivity = 20f;
+		particleSystem = GameObject.FindGameObjectWithTag ("Particles");
 	}
 	
 	// Update is called once per frame
@@ -33,21 +35,25 @@ public class TiltController : MonoBehaviour {
 		if ((Input.GetAxis ("Horizontal") > 0.2) && (currentRot.z >= 349 || currentRot.z <= 11)) 
 		{
 			transform.Rotate(new Vector3(0, 0, -1) * tiltSensitivity * Time.deltaTime);
+			particleSystem.transform.Rotate(new Vector3(0, 0, 1) * tiltSensitivity * Time.deltaTime, Space.World);
 		}
 
 		if (Input.GetAxis ("Horizontal") < -0.2 && (currentRot.z <= 10 || currentRot.z >= 348)) 
 		{
 			transform.Rotate(new Vector3(0, 0, 1) * tiltSensitivity * Time.deltaTime);
+			particleSystem.transform.Rotate(new Vector3(0, 0, -1) * tiltSensitivity * Time.deltaTime, Space.World);
 		}
 
 		if (Input.GetAxis ("Vertical") > 0.2 && (currentRot.x <= 10 || currentRot.x >= 348)) 
 		{
 			transform.Rotate(new Vector3(1, 0, 0) * tiltSensitivity * Time.deltaTime);
+			particleSystem.transform.Rotate(new Vector3(-1, 0, 0) * tiltSensitivity * Time.deltaTime, Space.World);
 		}
 
 		if (Input.GetAxis ("Vertical") < -0.2 && (currentRot.x >= 349 || currentRot.x <= 11)) 
 		{
 			transform.Rotate(new Vector3(-1, 0, 0) * tiltSensitivity * Time.deltaTime);
+			particleSystem.transform.Rotate(new Vector3(1, 0, 0) * tiltSensitivity * Time.deltaTime, Space.World);
 		}
 	}
 
